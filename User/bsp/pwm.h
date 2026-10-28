@@ -1,0 +1,52 @@
+#pragma once
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/* Includes ----------------------------------------------------------------- */
+#include <stdint.h>
+#include "tim.h"
+#include "bsp.h"
+
+/* USER INCLUDE BEGIN */
+
+/* USER INCLUDE END */
+
+
+/* Exported constants ------------------------------------------------------- */
+/* Exported macro ----------------------------------------------------------- */
+/* USER DEFINE BEGIN */
+
+/* USER DEFINE END */
+
+/* Exported types ----------------------------------------------------------- */
+/* PWM通道 */
+typedef enum {
+  BSP_PWM_BUZZER,
+  BSP_PWM_IMU_HEAT,
+  BSP_PWM_ARM_SERVO,       /* 取矿/armsimple舵机 TIM1_CH1 PE9 */
+  BSP_PWM_ROD_SERVO,       /* 取矛头/rodnew舵机 TIM1_CH3 PE13 */
+  BSP_PWM_NUM,
+  BSP_PWM_ERR,
+} BSP_PWM_Channel_t;
+
+/* Exported functions prototypes -------------------------------------------- */
+int8_t BSP_PWM_Start(BSP_PWM_Channel_t ch);
+int8_t BSP_PWM_SetComp(BSP_PWM_Channel_t ch, float duty_cycle);
+int8_t BSP_PWM_SetFreq(BSP_PWM_Channel_t ch, float freq);
+int8_t BSP_PWM_Stop(BSP_PWM_Channel_t ch);
+int8_t BSP_PWM_SetPulseUs(BSP_PWM_Channel_t ch, uint32_t pulse_us);
+uint32_t BSP_PWM_GetAutoReloadPreload(BSP_PWM_Channel_t ch);
+uint16_t BSP_PWM_GetChannel(BSP_PWM_Channel_t ch);
+TIM_HandleTypeDef* BSP_PWM_GetHandle(BSP_PWM_Channel_t ch);
+int8_t BSP_PWM_Start_DMA(BSP_PWM_Channel_t ch, uint32_t *pData, uint16_t Length);
+int8_t BSP_PWM_Stop_DMA(BSP_PWM_Channel_t ch);
+
+/* USER FUNCTION BEGIN */
+
+/* USER FUNCTION END */
+
+#ifdef __cplusplus
+}
+#endif

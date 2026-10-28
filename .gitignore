@@ -1,0 +1,13 @@
+/build/
+**/.DS_Store
+**/Thumbs.db
+*.o
+*.obj
+*.exe
+*.elf
+*.hex
+*.bin
+*.map
+/.vscode/
+/.idea/
+/.venv/

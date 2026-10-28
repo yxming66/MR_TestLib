@@ -1,0 +1,37 @@
+crc16:
+  dependencies: []
+  enabled: true
+crc8:
+  dependencies: []
+  enabled: true
+controller:
+  dependencies:
+  - component/filter
+  - component/math
+  enabled: true
+filter:
+  dependencies:
+  - component/math
+  enabled: true
+observer:
+  dependencies:
+  - component/math
+  enabled: true
+limiter:
+  dependencies: []
+  enabled: true
+mixer:
+  dependencies:
+  - component/user_math.h
+  enabled: true
+pid:
+  dependencies:
+  - component/filter
+  enabled: true
+timer:
+  dependencies:
+  - bsp/time
+  enabled: true
+user_math:
+  dependencies: []
+  enabled: true

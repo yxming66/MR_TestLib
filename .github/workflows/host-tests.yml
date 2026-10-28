@@ -1,0 +1,26 @@
+name: Host tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  arm-host-tests:
+    name: Arm host tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build arm host tests
+        run: |
+          mkdir -p build/host_tests
+          g++ -std=c++17 -Wall -Wextra -Wpedantic -fno-exceptions -fno-rtti -IUser \
+            User/robotics/arm/tests/arm_host_tests.cpp \
+            User/robotics/core/rotation.cpp User/robotics/core/transform.cpp \
+            -o build/host_tests/arm_host_tests
+      - name: Run arm host tests
+        run: ./build/host_tests/arm_host_tests
